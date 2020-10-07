@@ -1,4 +1,5 @@
 import os
+import time
 
 import torch
 from torch.utils.data import DataLoader
@@ -39,7 +40,7 @@ def evaluate(exp_name,
     model = MOVEModel(emb_size=emb_size)
 
     # loading a pre-trained model
-    model_name = os.path.join(main_path, 'saved_models', '{}'.format(exp_type), 'model_{}.pt'.format(exp_name))
+    model_name = os.path.join(main_path, 'saved_models', '{}_models'.format(exp_type), 'model_{}.pt'.format(exp_name))
     model.load_state_dict(torch.load(model_name, map_location='cpu'))
 
     # sending the model to gpu, if available
@@ -49,6 +50,8 @@ def evaluate(exp_name,
     test_data, test_labels = import_dataset_from_pt(filename=eval_dataset, suffix=False)
     test_set = FullSizeInstanceDataset(data=test_data)
     test_loader = DataLoader(test_set, batch_size=1, shuffle=False)
+
+    start_time = time.monotonic()
 
     with torch.no_grad():  # disabling gradient tracking
         model.eval()  # setting the model to evaluation mode
@@ -82,3 +85,7 @@ def evaluate(exp_name,
     # computing evaluation metrics from the obtained distances
     average_precision(
         -1 * dist_all.cpu().float().clone() + torch.diag(torch.ones(len(test_data)) * float('-inf')), dataset=1)
+
+    test_time = time.monotonic() - start_time
+
+    print('Total time: {:.0f}m{:.0f}s.'.format(test_time // 60, test_time % 60))
