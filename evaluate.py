@@ -32,7 +32,7 @@ def evaluate(exp_name,
 
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 
-    eval_dataset = os.path.join(main_path, 'data/da-tacos_benchmark_crema.pt')
+    eval_dataset = os.path.join(main_path, 'data/benchmark_crema.pt')
 
     print('Evaluating model {} on dataset {}.'.format(exp_name, eval_dataset))
 
