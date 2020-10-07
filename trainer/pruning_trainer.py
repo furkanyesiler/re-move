@@ -71,7 +71,7 @@ class PruningTrainer(BaseTrainer):
     def handle_training_batches(self):
         """
         Training loop for one mini-epoch.
-        :return training loss for the current mini-epoch
+        :return: training loss for the current mini-epoch
         """
         # setting the model to training mode
         self.model.train()

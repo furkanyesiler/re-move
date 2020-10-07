@@ -4,6 +4,11 @@ from utils.metrics import pairwise_euclidean_distance
 
 
 def create_label_masks(labels):
+    """
+    Creates positive and negatives masks for given list of labels
+    :param labels: labels to use for creating the masks
+    :return: positive and negative masks
+    """
     mask_diag = (1 - torch.eye(labels.size(0))).long()
     if torch.cuda.is_available():
         labels = labels.cuda()
@@ -17,7 +22,7 @@ def create_label_masks(labels):
 
 def triplet_mining_hard(dist_all, mask_pos, mask_neg):
     """
-    performs online hard mining
+    Performs online hard mining
     :param dist_all: pairwise distance matrix
     :param mask_pos: mask for positive elements of triplets
     :param mask_neg: mask for negative elements of triplets
@@ -45,7 +50,7 @@ def triplet_mining_hard(dist_all, mask_pos, mask_neg):
 
 def triplet_mining_random(dist_all, mask_pos, mask_neg):
     """
-    performs online random mining
+    Performs online random mining
     :param dist_all: pairwise distance matrix
     :param mask_pos: mask for positive elements of triplets
     :param mask_neg: mask for negative elements of triplets
@@ -64,7 +69,7 @@ def triplet_mining_random(dist_all, mask_pos, mask_neg):
 
 def triplet_mining_semihard(dist_all, mask_pos, mask_neg):
     """
-    performs online semi-hard mining
+    Performs online semi-hard mining
     :param dist_all: pairwise distance matrix
     :param mask_pos: mask for positive elements of triplets
     :param mask_neg: mask for negative elements of triplets
@@ -84,7 +89,7 @@ def triplet_mining_semihard(dist_all, mask_pos, mask_neg):
 
 def triplet_mining_allpos_semihard(dist_all, mask_pos, mask_neg):
     """
-    performs online semi-hard mining
+    Performs online semi-hard mining
     :param dist_all: pairwise distance matrix
     :param mask_pos: mask for positive elements of triplets
     :param mask_neg: mask for negative elements of triplets

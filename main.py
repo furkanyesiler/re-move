@@ -3,6 +3,7 @@ import json
 import pathlib
 import os
 
+from evaluate import evaluate
 from trainer.lsr_trainer import LSRTrainer
 from trainer.kd_trainer import KDTrainer
 from trainer.pruning_trainer import PruningTrainer
@@ -23,7 +24,7 @@ def main(run_type, cfg, experiment_name):
             Exception('Training mode not understood.')
         trainer.train()
     elif run_type == 'test':
-        pass
+        evaluate(experiment_name, cfg['exp_type'], cfg['main_path'], cfg['emb_size'], cfg['loss'])
     else:
         print('Run type not understood.')
 

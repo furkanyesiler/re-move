@@ -11,7 +11,7 @@ def kd_distance_loss(embs_s, embs_t, emb_size, **kwargs):
     :param embs_t: embeddings from the student model for each item in the batch
     :param emb_size: size of the embeddings of the student model
     :param kwargs: any other arguments
-    :return:
+    :return: average of the loss value for each element in the batch
     """
     # getting non-diagonal indices
     idxs = (1 - torch.eye(embs_s.size(0))).nonzero()

@@ -5,7 +5,7 @@ import torch
 
 def average_precision(ypred, path='', k=None, eps=1e-10, reduce_mean=True, dataset=0, print_metrics=True):
     """
-    calculating performance metrics
+    Calculating performance metrics
     :param ypred: square distance matrix
     :param path: the path of the working directory
     :param k: k value for map@k
@@ -50,7 +50,7 @@ def average_precision(ypred, path='', k=None, eps=1e-10, reduce_mean=True, datas
 
 def pairwise_euclidean_distance(x, y=None, eps=1e-12):
     """
-    computing squared Euclidean distances between the elements of two tensors
+    Computing squared Euclidean distances between the elements of two tensors
     :param x: first tensor
     :param y: second tensor (optional)
     :param eps: epsilon value for avoiding div by zero
@@ -69,7 +69,7 @@ def pairwise_euclidean_distance(x, y=None, eps=1e-12):
 
 def pairwise_cosine_similarity(x, y=None):
     """
-    computing cosine similarity between the elements of two tensors
+    Computing cosine similarity between the elements of two tensors
     :param x: first tensor
     :param y: second tensor (optional)
     :return: pairwise similarity matrix
@@ -81,7 +81,7 @@ def pairwise_cosine_similarity(x, y=None):
 
 def pairwise_pearson_coef(x, y=None):
     """
-    computing Pearson correlation coefficient values between the elements of two tensors
+    Computing Pearson correlation coefficient values between the elements of two tensors
     :param x: first tensor
     :param y: second tensor (optional)
     :return: pairwise similarity matrix

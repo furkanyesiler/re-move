@@ -5,7 +5,7 @@ from scipy import interpolate
 
 def import_dataset_from_pt(filename, chunks=17, suffix=True):
     """
-    loading a dataset stored in .pt format
+    Loading a dataset stored in .pt format
     :param filename: name of the .pt file to load
     :param chunks: number of chunks to load
     :param suffix: whether to load files in the following convention: 'filename_N.pt'
@@ -30,7 +30,7 @@ def import_dataset_from_pt(filename, chunks=17, suffix=True):
 
 def cs_augment(pcp, p_pitch=1, p_stretch=0.3, p_warp=0.3):
     """
-    applying data augmentation to a given pcp patch
+    Applying data augmentation to a given pcp patch
     :param pcp: pcp patch to augment (dimensions should be 1 x H x W)
     :param p_pitch: probability of applying pitch transposition
     :param p_stretch: probability of applying time stretch (with linear interpolation)
